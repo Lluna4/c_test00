@@ -1,69 +1,71 @@
-#include "stdio.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_comb.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ltranca- <ltranca-@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/14 12:24:29 by ltranca-          #+#    #+#             */
+/*   Updated: 2022/08/14 13:14:26 by ltranca-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void ft_print_comb(void);
-const char* pasar_a_str(int a);
+#include "unistd.h"
 
-int main(void) { 
-  ft_print_comb(); 
+void	ft_print_comb(void);
+void	ft_mulprint(int c1, int c2, int c3);
+
+int		g_a;
+int		g_b;
+int		g_c;
+char	g_a4;
+
+g_a = 0;
+
+int	main(void)
+
+{
+	ft_print_comb();
 }
 
-void ft_print_comb(void) {
-  int n1 = 0;
-  int n2 = 1;
-  int n3 = 2;
-  char a[10];
-  while (n1 >= 0) {
-    
-    sprintf(a, "%d%d%d,", n1, n2, n3);
-    write(1, &a, 4);
-    if (n1 == 7 && n2 == 8 && n3 == 9) {
-      break;
-    }
-    if (n2 == 9) {
-      n1 += 1;
-      n2 = 1;
-    } 
-    else if (n3 == 9) {
-      n2 += 1;
-      n3 = 2;
-    } 
+void	ft_print_comb(void)
+{
+	char	a1;
+	char	a2;
+	char	a3;
 
-
-    n3 += 1;
-  }
+	g_a4 = 44;
+	while (g_a <= 7)
+	{
+		g_b = g_a + 1;
+		while (g_b <= 8)
+		{
+			g_c = g_b + 1;
+			while (g_c <= 9)
+			{
+				ft_mulprint(g_a, g_b, g_c);
+				if (g_a != 7 || g_b != 8 || g_c != 9)
+				{
+					write(1, &g_a4, 1);
+				}
+				g_c++;
+			}
+			g_b++;
+		}
+		g_a++;
+	}
 }
 
-//al no poder usarse ninguna funcion para pasar de int a srt pues tengo que hacer esto
-const char* pasar_a_str(int a){
-  if (a == 0){
-    return "0";
-  }
-    if (a == 1){
-    return "1";
-  }
-    if (a == 2){
-    return "2";
-  }
-    if (a == 3){
-    return "3";
-  }
-    if (a == 4){
-    return "4";
-  }
-    if (a == 5){
-    return "5";
-  }
-    if (a == 6){
-    return "6";
-  }
-    if (a == 7){
-    return "7";
-  }
-    if (a == 8){
-    return "8";
-  }
-    if (a == 9){
-    return "9";
-  }
-}
+void	ft_mulprint(int c1, int c2, int c3)
+{
+	char	c11;
+	char	c22;
+	char	c33;
 
+	c11 = c1 + 48;
+	c22 = c2 + 48;
+	c33 = c3 + 48;
+	write(1, &c11, 1);
+	write(1, &c22, 1);
+	write(1, &c33, 1);
+}
